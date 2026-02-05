@@ -1,0 +1,11 @@
+name: Hello Actions
+
+on:
+    workflow_dispatch
+
+jobs:
+    hello:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Print greeting
+            run: echo "Github Actions is working!"
