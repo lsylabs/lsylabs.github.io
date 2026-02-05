@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 import Footer from "./Footer";
+
+interface PortfolioProps {
+  onBack: () => void;
+}
 
 const projects = [
   {
@@ -35,7 +40,7 @@ const projects = [
   },
 ];
 
-const Portfolio = () => {
+const Portfolio = ({ onBack }: PortfolioProps) => {
   return (
     <motion.div
       className="min-h-screen bg-background"
@@ -46,14 +51,32 @@ const Portfolio = () => {
       {/* Header */}
       <header className="py-8 px-6">
         <div className="container max-w-5xl mx-auto">
-          <motion.p
-            className="text-micro text-muted-foreground uppercase tracking-widest"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            Selected Work
-          </motion.p>
+          <div className="flex items-center justify-between gap-6">
+            <motion.button
+              type="button"
+              onClick={onBack}
+              className="group -ml-2 inline-flex items-center gap-2 px-2 py-2 text-micro uppercase tracking-widest text-muted-foreground transition-colors duration-400 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              aria-label="Back to landing"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+            >
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              <span className="relative inline-block">
+                <span>Back</span>
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-foreground transition-all duration-400 group-hover:w-full" />
+              </span>
+            </motion.button>
+
+            <motion.p
+              className="text-micro text-muted-foreground uppercase tracking-widest"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              Selected Work
+            </motion.p>
+          </div>
         </div>
       </header>
 
